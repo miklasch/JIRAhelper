@@ -1,0 +1,23 @@
+﻿{
+  "manifest_version": 2,
+  "name": "JIRAhelper",
+  "version": "0.4",
+  "author": "Michael K. Schmidt",
+  "description": "Simplifies Loc Bug Summary writing by pre-filling from issue fields",
+  "icons": { "128" : "img/sunshine.png"},
+  "homepage_url": "http://www.loctools.com",
+  "content_scripts": [
+    {
+      "matches": ["https://jira.aeriagames.com/*"],
+      "js": ["js/JIRAhelper.js"]
+    }
+  ],
+  "permissions": [
+    "storage", 
+	"tabs"
+  ],
+  "web_accessible_resources": [
+	"img/*.png", 
+	"js/*.js"
+  ]
+}
