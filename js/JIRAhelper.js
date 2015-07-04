@@ -1,4 +1,4 @@
-﻿// JIRAhelper, version 0.4
+﻿// JIRAhelper, version 0.5
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -90,6 +90,7 @@ function fillSummaryClickHandler(e) {
 	// get any existing summary text and try to separate and preserve any short description
 	var su = document.querySelector('input[id="summary"]').value.trim();
 	if (su != '') {
+		su = su.replace(/([–—])/g, '-');
 		var words = su.split(' -');
 		su = words[(words.length-1)].trim();
 		if (su == '(Description)')
@@ -111,7 +112,8 @@ function fillSummaryClickHandler(e) {
 	}
 
 	// stitch together the summary string
-	document.querySelector('input[id="summary"]').value = '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' + lo + ' - ' + (su != '' ? su : de);
+	//document.querySelector('input[id="summary"]').value = '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' + lo + ' - ' + (su != '' ? su : de);
+	document.querySelector('input[id="summary"]').value = '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de);
 }
  
 // configuration of the observer:
