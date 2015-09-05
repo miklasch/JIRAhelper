@@ -1,4 +1,4 @@
-﻿// JIRAhelper, version 0.5
+// JIRAhelper, version 0.6
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -16,7 +16,7 @@ var observer = new MutationObserver(function(mutations) {
 		} catch(e) {
 			it = '';
 		}
-		if ((it == 'Loc Bug') || (it == 'Subtask - Loc') || locbugFieldsExist)  {
+		if ((it == 'Bug - LQA') || (it == 'Loc Bug') || (it == 'Subtask - Loc') || locbugFieldsExist)  {
 			var s = document.querySelector('input[id="summary"]');
 			if (s !== null) {
 			   // check if Prefill button is already present and add it if not
