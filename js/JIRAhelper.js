@@ -1,4 +1,4 @@
-// JIRAhelper, version 1.3
+// JIRAhelper, version 1.4
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -55,7 +55,7 @@ function fillSummaryClickHandler(e) {
 	var e = (isGREE ? document.getElementById("customfield_11403") : document.getElementById("customfield_12909"));
 	var bc = e.options[e.selectedIndex].text.toUpperCase();
 	if (bc == 'NONE')
-		bc = (isGREE ? '(Category)' : '(Class)');
+		bc = (isGREE ? 'category' : '(Class)');
 	switch (bc) {
 		case 'TEXT CHANGE (L10N)':
 				bc = 'L10N'; 
@@ -84,25 +84,25 @@ function fillSummaryClickHandler(e) {
 		}
 	}
 	if (la == '')
-		la = '(Language)';
+		la = (isGREE ? 'language' : '(Language)');
 	
 	// get bug type
 	var e = (isGREE ? document.getElementById("customfield_11404") : document.getElementById("customfield_12910"));
 	var bt = e.options[e.selectedIndex].text;
 	if (bt == 'None')
-		bt = '(Type)';
+		bt = (isGREE ? 'type' : '(Type)');
 
 	// get location
 	var e = (isGREE ? document.getElementById("customfield_11405") : document.getElementById("customfield_12911"));
 	var lo = e.options[e.selectedIndex].text;
 	if (lo == 'None')
-		lo = '(Location)';
+		lo = (isGREE ? 'location' : '(Location)');
 	
 	// get any existing summary text and try to separate and preserve any short description
 	var su = document.querySelector('input[id="summary"]').value.trim();
 	if (su != '') {
 		su = su.replace(/([–—])/g, '-');
-		var words = su.split(' -');
+		var words = su.split((isGREE ? '] ' : ' -'));
 		su = words[(words.length-1)].trim();
 		if (su == '(Description)')
 			su = '';
@@ -111,7 +111,7 @@ function fillSummaryClickHandler(e) {
 	// get description but limit to first line or first 12 words
 	var de = document.querySelector('textarea[id="description"]').value;
 	if (de == '') {
-		de = '(Description)';
+		de = (isGREE ? 'description' : '(Description)');
 	} else {
 		de = de.trim().split('\n')[0];
 		var words = de.split(' ');
@@ -123,8 +123,7 @@ function fillSummaryClickHandler(e) {
 	}
 
 	// stitch together the summary string
-	//document.querySelector('input[id="summary"]').value = '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' + lo + ' - ' + (su != '' ? su : de);
-	var prefill = (isGREE ? la + ' - ' + bc + ' - ' + bt + ' - ' + lo + ' - ' +  (su != '' ? su : de) : '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de));
+	var prefill = (isGREE ? '[' + la + '] [' + bc + '] [' + bt + '] [' + lo + '] ' +  (su != '' ? su : de) : '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de));
 	document.querySelector('input[id="summary"]').value = prefill;
 }
  
