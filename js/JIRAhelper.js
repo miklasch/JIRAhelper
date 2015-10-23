@@ -1,4 +1,4 @@
-// JIRAhelper, version 1.1
+// JIRAhelper, version 1.2
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -54,14 +54,16 @@ function fillSummaryClickHandler(e) {
 	// get bug category
 	var e = (isGREE ? document.getElementById("customfield_11403") : document.getElementById("customfield_12909"));
 	var bc = e.options[e.selectedIndex].text.toUpperCase();
-	if ((bc == '') || bc == 'NONE'))
+	if (bc == 'NONE')
 		bc = (isGREE ? '(Category)' : '(Class)');
 	switch (bc) {
 		case 'TEXT CHANGE (L10N)':
 				bc = 'L10N'; 
 				break;
-		case 'GFX CHANGE (ARTWORK)': // Aeria
-		case 'ARTWORK CHANGE (ART)': // GREE
+		// Aeria
+		case 'GFX CHANGE (ARTWORK)':
+		// GREE
+		case 'ARTWORK CHANGE (ART)':
 				bc = 'ART';
 				break;
 		case 'CODE CHANGE (I18N)':
