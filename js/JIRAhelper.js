@@ -1,4 +1,4 @@
-// JIRAhelper, version 0.8
+// JIRAhelper, version 0.9
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -52,7 +52,7 @@ function fillSummaryClickHandler(e) {
 	var pr = document.getElementById("description").getAttribute("data-projectkey");
 	
 	// get bug category
-	var e = (isGREE ? document.getElementById("customfield_12909") : document.getElementById("customfield_11403"));
+	var e = (isGREE ? document.getElementById("customfield_11403") : document.getElementById("customfield_12909"));
 	var bc = e.options[e.selectedIndex].text;
 	if (bc == 'None')
 		bc = (isGREE ? '(Category)' : '(Class)');
@@ -69,7 +69,7 @@ function fillSummaryClickHandler(e) {
 	}
 
 	// get language(s)
-	var e = (isGREE ? document.getElementById("customfield_12908") : document.getElementById("customfield_11401"));
+	var e = (isGREE ? document.getElementById("customfield_11401") : document.getElementById("customfield_12908"));
 	var la = '';
 	for (var i = 0; i < e.options.length; i++) {
 		if (e.options[i].selected) {
@@ -85,13 +85,13 @@ function fillSummaryClickHandler(e) {
 		la = '(Language)';
 	
 	// get bug type
-	var e = (isGREE ? document.getElementById("customfield_12910") : document.getElementById("customfield_11404"));
+	var e = (isGREE ? document.getElementById("customfield_11404") : document.getElementById("customfield_12910"));
 	var bt = e.options[e.selectedIndex].text;
 	if (bt == 'None')
 		bt = '(Type)';
 
 	// get location
-	var e = (isGREE ? document.getElementById("customfield_12911") : document.getElementById("customfield_11405"));
+	var e = (isGREE ? document.getElementById("customfield_11405") : document.getElementById("customfield_12911"));
 	var lo = e.options[e.selectedIndex].text;
 	if (lo == 'None')
 		lo = '(Location)';
