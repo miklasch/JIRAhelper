@@ -53,18 +53,18 @@ function fillSummaryClickHandler(e) {
 	
 	// get bug category
 	var e = (isGREE ? document.getElementById("customfield_11403") : document.getElementById("customfield_12909"));
-	var bc = e.options[e.selectedIndex].text;
-	if (bc == 'None')
+	var bc = e.options[e.selectedIndex].text.toUpperCase();
+	if ((bc == '') || bc == 'NONE'))
 		bc = (isGREE ? '(Category)' : '(Class)');
 	switch (bc) {
-		case 'Text change (L10N)':
+		case 'TEXT CHANGE (L10N)':
 				bc = 'L10N'; 
 				break;
-		case 'Gfx change (Artwork)':
-		case 'Graphics change (Artwork)':
+		case 'GFX CHANGE (ARTWORK)': // Aeria
+		case 'GRAPHICS CHANGE (ART)': // GREE
 				bc = 'ART';
 				break;
-		case 'Code change (I18N)':
+		case 'CODE CHANGE (I18N)':
 				bc = 'I18N';
 	}
 
