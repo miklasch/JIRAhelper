@@ -1,4 +1,4 @@
-// JIRAhelper, version 0.9
+// JIRAhelper, version 1.1
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -61,7 +61,7 @@ function fillSummaryClickHandler(e) {
 				bc = 'L10N'; 
 				break;
 		case 'GFX CHANGE (ARTWORK)': // Aeria
-		case 'GRAPHICS CHANGE (ART)': // GREE
+		case 'ARTWORK CHANGE (ART)': // GREE
 				bc = 'ART';
 				break;
 		case 'CODE CHANGE (I18N)':
