@@ -1,4 +1,4 @@
-// JIRAhelper, version 1.4
+// JIRAhelper, version 1.5
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -44,9 +44,10 @@ var observer = new MutationObserver(function(mutations) {
 });
 
 function fillSummaryClickHandler(e) {
-	// get issue type name, to differentiate between Aeria and GREE JIRA instances
-	var it = document.querySelector('input[id="issuetype-field"]').value;
-	var isGREE = (it === 'Localization Bug');
+	// differentiate between Aeria and GREE JIRA instances (hack!)
+	var aeria = document.getElementById("customfield_12908";
+	var gree = document.getElementById("customfield_11401";
+	var isGREE = ((aeria === null) && (gree !== null));
 
 	// get project code
 	var pr = document.getElementById("description").getAttribute("data-projectkey");
