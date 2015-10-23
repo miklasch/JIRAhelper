@@ -1,4 +1,4 @@
-// JIRAhelper, version 1.5
+// JIRAhelper, version 1.6
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -45,8 +45,8 @@ var observer = new MutationObserver(function(mutations) {
 
 function fillSummaryClickHandler(e) {
 	// differentiate between Aeria and GREE JIRA instances (hack!)
-	var aeria = document.getElementById("customfield_12908";
-	var gree = document.getElementById("customfield_11401";
+	var aeria = document.getElementById("customfield_12908");
+	var gree = document.getElementById("customfield_11401");
 	var isGREE = ((aeria === null) && (gree !== null));
 
 	// get project code
