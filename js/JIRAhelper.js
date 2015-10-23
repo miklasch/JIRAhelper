@@ -1,4 +1,4 @@
-// JIRAhelper, version 1.2
+// JIRAhelper, version 1.3
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -8,7 +8,7 @@ var target = document.querySelector('#jira');
 // create an observer instance
 var observer = new MutationObserver(function(mutations) {
 	// DOM has been changed, check for existence of summary field
-	var locbugFieldsExist = (((document.getElementById("customfield_12908") !== null) && (document.getElementById("customfield_12910") !== null) && (document.getElementById("customfield_12911") !== null)) || ((document.getElementById("customfield_12908") !== null) && (document.getElementById("customfield_12910") !== null) && (document.getElementById("customfield_12911") !== null)));
+	var locbugFieldsExist = (((document.getElementById("customfield_12908") !== null) && (document.getElementById("customfield_12910") !== null) && (document.getElementById("customfield_12911") !== null)) || ((document.getElementById("customfield_11401") !== null) && (document.getElementById("customfield_11404") !== null) && (document.getElementById("customfield_11405") !== null)));
 	var itf = document.querySelector('input[id="issuetype-field"]');
 	if ((itf !== null) || locbugFieldsExist){
 		try {
