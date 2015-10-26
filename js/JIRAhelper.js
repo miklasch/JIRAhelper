@@ -1,4 +1,4 @@
-// JIRAhelper, version 1.6
+// JIRAhelper, version 1.7
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -124,7 +124,7 @@ function fillSummaryClickHandler(e) {
 	}
 
 	// stitch together the summary string
-	var prefill = (isGREE ? '[' + la + '] [' + bc + '] [' + bt + '] [' + lo + '] ' +  (su != '' ? su : de) : '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de));
+	var prefill = (isGREE ? '[' + la + '][' + bc + '][' + bt + '][' + lo + '] ' +  (su != '' ? su : de) : '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de));
 	document.querySelector('input[id="summary"]').value = prefill;
 }
  
