@@ -266,10 +266,10 @@ function fillSummaryClickHandler(e) {
 					prefill = '[' + pl + '][' + la + '][' + bc + '][' + bt + '][' + lo + '] ' +  (su != '' ? su : de);
 					break;
 			case 2:		// MunkyFun JIRA instance
-					prefill = '[' + (la.split(', ').length >= 6 ? 'GLOBAL' : la) + '] ' +  (su != '' ? su : de));;
+					prefill = '[' + (la.indexOf('FR, IT, DE, ES, RU, TR') >= 0 ? 'GLOBAL' : la) + '] ' +  (su != '' ? su : de);
 					break;
 			case 3:		// Aeria JIRA instance
-					prefill = '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de));
+					prefill = '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de);
 		}
 		document.querySelector('input[id="summary"]').value = prefill;
 	}
