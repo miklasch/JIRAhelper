@@ -1,4 +1,4 @@
-// JIRAhelper, version 2.0
+// JIRAhelper, version 2.1
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
