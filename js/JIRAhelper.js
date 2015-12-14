@@ -216,7 +216,7 @@ function fillSummaryClickHandler(e) {
 				}
 			}
 		}
-		if ((pl == 'None') || (pl == '') {
+		if ((pl == 'None') || (pl == '')) {
 			switch (ji) {
 				case 1:	// GREE JIRA instance
 				case 2:	// MunkyFun JIRA instance
