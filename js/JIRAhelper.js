@@ -1,4 +1,4 @@
-// JIRAhelper, version 2.1
+// JIRAhelper, version 2.2
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -200,18 +200,20 @@ function fillSummaryClickHandler(e) {
 					e = document.getElementById("customfield_10000");
 					break;
 			case 3:		// Aeria JIRA instance
-					e = document.getElementById("customfield_98765");
+					e = document.getElementById("customfield_12907");
 		}
-		try {
-			var pl = e.options[e.selectedIndex].text; 
-		} catch(err) {
-			for (var i = 0; i < e.options.length; i++) {
-				if (e.options[i].selected) {
-					var x = e.options[i].text;
-					if (x != '') {
-						if (pl != '') 
-							pl += ', ';
-						pl += x;
+		if (e !== null) {
+			try {
+				var pl = e.options[e.selectedIndex].text; 
+			} catch(err) {
+				for (var i = 0; i < e.options.length; i++) {
+					if (e.options[i].selected) {
+						var x = e.options[i].text;
+						if (x != '') {
+							if (pl != '') 
+								pl += ', ';
+							pl += x;
+						}
 					}
 				}
 			}
