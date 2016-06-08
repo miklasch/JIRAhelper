@@ -1,4 +1,4 @@
-// JIRAhelper, version 2.2
+// JIRAhelper, version 2.3
 // (C) 2015 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -194,7 +194,7 @@ function fillSummaryClickHandler(e) {
 	if (ji > 0) {
 		switch (ji) {
 			case 1:		// GREE JIRA instance
-					e = document.getElementById("customfield_11304");
+					e = document.getElementById("customfield_11504");
 					break;
 			case 2:		// MunkyFun JIRA instance
 					e = document.getElementById("customfield_10000");
