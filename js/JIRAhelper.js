@@ -1,4 +1,4 @@
-// JIRAhelper, version 3.4
+// JIRAhelper, version 3.5
 // (C) 2015-2017 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -293,7 +293,7 @@ function fillSummaryClickHandler(e) {
 			case 1:	// GREE JIRA instance
 					switch (gpr) {
 						case 1:	// DS
-								prefill = '[' + (la.indexOf('FR, IT, DE, ES, RU, TR, PT-BR, NL, DA, SV, NB, JA, KO, ZH-CN, ZH-TW, ID') >= 0 ? 'GLOBAL' : la) + '][' + bt + '][' + lo + '] ' +  (su != '' ? su : de);
+								prefill = '[' + (la.indexOf('FR, IT, DE, ES, RU, TR, BR, NL, DA, SV, NB, JA, KO, CN, TW, ID') >= 0 ? 'GLOBAL' : la) + '][' + bt + '][' + lo + '] ' +  (su != '' ? su : de);
 								break;
 						case 2:	// KND
 								prefill = '[' + (la.indexOf('FR, IT, DE, ES, RU, TR') >= 0 ? 'GLOBAL' : la) + ']' + ' - ' + pl + ' - ' + bt + ' - ' +  (su != '' ? su : de);
