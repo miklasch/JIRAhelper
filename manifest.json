@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "JIRAhelper",
-  "version": "3.3",
+  "version": "3.4",
   "author": "Michael K. Schmidt",
   "description": "Simplifies Loc Bug Summary writing by pre-filling from issue fields",
   "icons": { "128" : "img/sunshine.png"},
