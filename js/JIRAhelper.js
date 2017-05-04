@@ -1,4 +1,4 @@
-// JIRAhelper, version 3.6
+// JIRAhelper, version 3.7
 // (C) 2015-2017 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -8,7 +8,7 @@ var target = document.querySelector('#jira');
 // create an observer instance
 var observer = new MutationObserver(function(mutations) {
 	// DOM has been changed, check for existence of summary field
-	var locbugFieldsExist = (((document.getElementById("customfield_12908") !== null) && (document.getElementById("customfield_12910") !== null) && (document.getElementById("customfield_12911") !== null)) || ((document.getElementById("customfield_11401") !== null) && (document.getElementById("customfield_11404") !== null) && (document.getElementById("customfield_11405") !== null)) || ((document.getElementById("customfield_10100") !== null) && (document.getElementById("customfield_10103") !== null) && (document.getElementById("customfield_10104") !== null)));
+	var locbugFieldsExist = (((document.getElementById("customfield_10602") !== null) && (document.getElementById("customfield_10606") !== null) && (document.getElementById("customfield_10607") !== null)) || ((document.getElementById("customfield_11401") !== null) && (document.getElementById("customfield_11404") !== null) && (document.getElementById("customfield_11405") !== null)));
 	var itf = document.querySelector('input[id="issuetype-field"]');
 	if ((itf !== null) || locbugFieldsExist){
 		try {
@@ -44,20 +44,15 @@ var observer = new MutationObserver(function(mutations) {
 });
 
 function fillSummaryClickHandler(e) {
-	// differentiate between Aeria, MunkyFun and GREE JIRA instances (hack!)
+	// differentiate between GIE and GREE Melbourne Jira instances (hack!)
 	var gree = document.getElementById("customfield_11401");
-	var mfun = document.getElementById("customfield_10100");
-	var aeria = document.getElementById("customfield_12908");
-	var ji = 0;		//cannot uniquely identify jira instance
-	if ((gree !== null) && (mfun === null) && (aeria === null)) {
-		ji = 1;		// GREE JIRA instance
+	var gmbn = document.getElementById("customfield_10602");
+	var ji = 0;		//cannot uniquely identify Jira instance
+	if ((gree !== null) && (mfun === null)) {
+		ji = 1;		// GIE Jira instance
 	} else {
-		if ((mfun !== null) && (gree === null) && (aeria === null)) {
-			ji = 2;		// MunkyFun JIRA instance
-		} else {
-			if ((aeria !== null) && (gree === null) && (mfun === null)) {
-				ji = 3;		// Aeria JIRA instance
-			}
+		if ((gmbn !== null) && (gree === null)) {
+			ji = 2;		// GREE Melbourne Jira instance
 		}
 	}
 
@@ -68,32 +63,24 @@ function fillSummaryClickHandler(e) {
 	var bc = '';
 	if (ji > 0) {
 		switch (ji) {
-			case 1:		// GREE JIRA instance
+			case 1:		// GIE Jira instance
 					e = document.getElementById("customfield_11403");
 					break;
-			case 2:		// MunkyFun JIRA instance
-					e = document.getElementById("customfield_10102");
-					break;
-			case 3:		// Aeria JIRA instance
-					e = document.getElementById("customfield_12909");
+			case 2:		// GREE Melbourne Jira instance
+					e = document.getElementById("customfield_10605");
 		}
 		var bc = e.options[e.selectedIndex].text.toUpperCase();
 		if (bc == 'NONE') {
 			switch (ji) {
-				case 1:	// GREE JIRA instance
-				case 2:	// MunkyFun JIRA instance
+				case 1:	// GIE Jira instance
+				case 2:	// GREE Melbourne Jira instance
 						bc = 'category';
-						break;
-				case 3:	// Aeria JIRA instance
-						bc = '(Class)';
 			}
 		}
 		switch (bc) {
 			case 'TEXT CHANGE (L10N)':
 					bc = 'L10N'; 
 					break;
-			// Aeria
-			case 'GFX CHANGE (ARTWORK)':
 			// GREE
 			case 'ARTWORK CHANGE (ART)':
 					bc = 'ART';
@@ -107,14 +94,11 @@ function fillSummaryClickHandler(e) {
 	var la = '';
 	if (ji > 0) {
 		switch (ji) {
-			case 1:		// GREE JIRA instance
+			case 1:		// GIE Jira instance
 					e = document.getElementById("customfield_11401");
 					break;
-			case 2:		// MunkyFun JIRA instance
-					e = document.getElementById("customfield_10100");
-					break;
-			case 3:		// Aeria JIRA instance
-					e = document.getElementById("customfield_12908");
+			case 2:		// GREE Melbourne Jira instance
+					e = document.getElementById("customfield_10602");
 		}
 		for (var i = 0; i < e.options.length; i++) {
 			if (e.options[i].selected) {
@@ -134,12 +118,9 @@ function fillSummaryClickHandler(e) {
 		}
 		if (la == '') {
 			switch (ji) {
-				case 1:	// GREE JIRA instance
-				case 2:	// MunkyFun JIRA instance
+				case 1:	// GIE Jira instance
+				case 2:	// GREE Melbourne Jira instance
 						la = 'language';
-						break;
-				case 3:	// Aeria JIRA instance
-						la = '(Language)';
 			}
 		}
 	}
@@ -147,24 +128,18 @@ function fillSummaryClickHandler(e) {
 	var bt = '';
 	if (ji > 0) {
 		switch (ji) {
-			case 1:		// GREE JIRA instance
+			case 1:		// GIE Jira instance
 					e = document.getElementById("customfield_11404");
 					break;
-			case 2:		// MunkyFun JIRA instance
-					e = document.getElementById("customfield_10103");
-					break;
-			case 3:		// Aeria JIRA instance
-					e = document.getElementById("customfield_12910");
+			case 2:		// GREE Melbourne Jira instance
+					e = document.getElementById("customfield_10607");
 		}
 		var bt = e.options[e.selectedIndex].text;
 		if (bt == 'None') {
 			switch (ji) {
-				case 1:	// GREE JIRA instance
-				case 2:	// MunkyFun JIRA instance
+				case 1:	// GIE Jira instance
+				case 2:	// GREE Melbourne Jira instance
 						bt = 'type';
-						break;
-				case 3:	// Aeria JIRA instance
-						bt = '(Type)';
 			}
 		}
 	}
@@ -173,34 +148,28 @@ function fillSummaryClickHandler(e) {
 	var lo = '';
 	if (ji > 0) {
 		switch (ji) {
-			case 1:		// GREE JIRA instance
+			case 1:		// GIE Jira instance
 					e = document.getElementById("customfield_11405");
 					break;
-			case 2:		// MunkyFun JIRA instance
-					e = document.getElementById("customfield_10104");
-					break;
-			case 3:		// Aeria JIRA instance
-					e = document.getElementById("customfield_12911");
+			case 2:		// GREE Melbourne Jira instance
+					e = document.getElementById("customfield_10606");
 		}
 		var lo = e.options[e.selectedIndex].text;
 		if (lo == 'None') {
 			switch (ji) {
-				case 1:	// GREE JIRA instance
-				case 2:	// MunkyFun JIRA instance
+				case 1:	// GIE Jira instance
+				case 2:	// GREE Melbourne Jira instance
 						lo = 'location';
-						break;
-				case 3:	// Aeria JIRA instance
-						lo = '(Location)';
 			}
 		}
 	}
 
 	// get platform
-	var gpr = 0; // GREE Jira project is undefined
+	var gpr = 0; // GIE Jira project is undefined
 	var pl = '';
 	if (ji > 0) {
 		switch (ji) {
-			case 1:	// GREE JIRA instance
+			case 1:	// GIE Jira instance
 					e = document.getElementById("customfield_11504"); // DS
 					if (e == null) {
 						e = document.getElementById("customfield_11304"); //KND; engineering owner ID is "customfield_10800"
@@ -209,11 +178,8 @@ function fillSummaryClickHandler(e) {
 					} else
 						gpr = 1; // GREE Jira project is DS
 					break;
-			case 2:	// MunkyFun JIRA instance
-					e = document.getElementById("customfield_10000");
-					break;
-			case 3:	// Aeria JIRA instance
-					e = document.getElementById("customfield_12907");
+			case 2:	// GREE Melbourne Jira instance
+					e = document.getElementById("customfield_10608");
 		}
 		if (e !== null) {
 			try {
@@ -233,12 +199,9 @@ function fillSummaryClickHandler(e) {
 		}
 		if ((pl == 'None') || (pl == '')) {
 			switch (ji) {
-				case 1:	// GREE JIRA instance
-				case 2:	// MunkyFun JIRA instance
+				case 1:	// GIE Jira instance
+				case 2:	// GREE Melbourne Jira instance
 						pl = 'platform';
-						break;
-				case 3:	// Aeria JIRA instance
-						pl = '(Platform)';
 			}
 		} else {
 			if (pl.toUpperCase().indexOf('IOS') >= 0) {
@@ -269,12 +232,9 @@ function fillSummaryClickHandler(e) {
 	var de = document.querySelector('textarea[id="description"]').value;
 	if (de == '') {
 		switch (ji) {
-			case 1:	// GREE JIRA instance
-			case 2:	// MunkyFun JIRA instance
+			case 1:	// GIE Jira instance
+			case 2:	// GREE Melbourne Jira instance
 					de = 'description';
-					break;
-			case 3:	// Aeria JIRA instance
-					de = '(Description)';
 		}
 	} else {
 		de = de.trim().split('\n')[0];
@@ -290,7 +250,7 @@ function fillSummaryClickHandler(e) {
 	if (ji > 0) {
 		var prefill = '';
 		switch (ji) {
-			case 1:	// GREE JIRA instance
+			case 1:	// GIE Jira instance
 					switch (gpr) {
 						case 1:	// DS
 								prefill = '[' + (la.indexOf('FR, IT, DE, ES, RU, TR, BR, NL, DA, SV, NB, JA, KO, CN, TW, ID') >= 0 ? 'GLOBAL' : la) + '][' + bt + '][' + lo + '] ' +  (su != '' ? su : de);
@@ -302,11 +262,8 @@ function fillSummaryClickHandler(e) {
 								prefill = (su != '' ? su : de);
 					}
 					break;
-			case 2:	// MunkyFun JIRA instance
-					prefill = '[' + (la.indexOf('FR, IT, DE, ES, RU, TR') >= 0 ? 'GLOBAL' : la) + '] ' +  (su != '' ? su : de);
-					break;
-			case 3:	// Aeria JIRA instance
-					prefill = '[' + pr + '] ' + bc + ' - ' + la + ' - ' + bt + ' - ' +  (su != '' ? su : de);
+			case 2:	// GREE Melbourne Jira instance
+					prefill = '[' + (la.indexOf('FR, IT, DE, ES, RU, TR, BR, NL, JA, KO, CN, TW, ID') >= 0 ? 'GLOBAL' : la) + '][' + bt + '] ' +  (su != '' ? su : de);
 		}
 		document.querySelector('input[id="summary"]').value = prefill;
 	}
@@ -317,4 +274,3 @@ var config = { attributes: false, childList: true, characterData: true, subtree:
  
 // pass in the target node, as well as the observer options
 observer.observe(target, config);
-
