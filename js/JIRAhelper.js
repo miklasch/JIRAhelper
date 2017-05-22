@@ -1,4 +1,4 @@
-// JIRAhelper, version 3.7
+// JIRAhelper, version 3.8
 // (C) 2015-2017 Michael K. Schmidt
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -48,7 +48,7 @@ function fillSummaryClickHandler(e) {
 	var gree = document.getElementById("customfield_11401");
 	var gmbn = document.getElementById("customfield_10602");
 	var ji = 0;		//cannot uniquely identify Jira instance
-	if ((gree !== null) && (mfun === null)) {
+	if ((gree !== null) && (gmbn === null)) {
 		ji = 1;		// GIE Jira instance
 	} else {
 		if ((gmbn !== null) && (gree === null)) {
